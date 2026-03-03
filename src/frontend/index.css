@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 1rem;
+
+    /* Dark navy glassmorphism theme — always dark */
+    --background: 0.135 0.035 265;
+    --foreground: 0.96 0.008 265;
+
+    --card: 0.175 0.045 265;
+    --card-foreground: 0.96 0.008 265;
+
+    --popover: 0.16 0.04 265;
+    --popover-foreground: 0.96 0.008 265;
+
+    --primary: 0.72 0.17 145;
+    --primary-foreground: 0.135 0.035 265;
+
+    --secondary: 0.22 0.055 265;
+    --secondary-foreground: 0.96 0.008 265;
+
+    --muted: 0.22 0.055 265;
+    --muted-foreground: 0.65 0.012 265;
+
+    --accent: 0.28 0.065 265;
+    --accent-foreground: 0.96 0.008 265;
+
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.96 0.008 265;
+
+    --border: 0.96 0.008 265 / 12%;
+    --input: 0.96 0.008 265 / 8%;
+    --ring: 0.72 0.17 145 / 60%;
+
+    --chart-1: 0.72 0.17 145;
+    --chart-2: 0.65 0.15 200;
+    --chart-3: 0.60 0.20 260;
+    --chart-4: 0.75 0.18 80;
+    --chart-5: 0.68 0.22 30;
+
+    --sidebar: 0.175 0.045 265;
+    --sidebar-foreground: 0.96 0.008 265;
+    --sidebar-primary: 0.72 0.17 145;
+    --sidebar-primary-foreground: 0.135 0.035 265;
+    --sidebar-accent: 0.22 0.055 265;
+    --sidebar-accent-foreground: 0.96 0.008 265;
+    --sidebar-border: 0.96 0.008 265 / 12%;
+    --sidebar-ring: 0.72 0.17 145 / 60%;
+
+    /* App-specific tokens */
+    --glass-panel: rgba(18, 26, 51, 0.72);
+    --glass-panel-hover: rgba(18, 26, 51, 0.85);
+    --glass-card: rgba(255, 255, 255, 0.06);
+    --glass-card-border: rgba(255, 255, 255, 0.12);
+    --glass-sub: rgba(255, 255, 255, 0.03);
+    --glass-sub-border: rgba(255, 255, 255, 0.10);
+    --text-primary: rgba(255, 255, 255, 0.92);
+    --text-muted: rgba(255, 255, 255, 0.65);
+    --text-dim: rgba(255, 255, 255, 0.45);
+    --shadow-panel: 0 10px 25px rgba(0, 0, 0, 0.35);
+    --shadow-card: 0 8px 18px rgba(0, 0, 0, 0.25);
+    --shadow-modal: 0 18px 40px rgba(0, 0, 0, 0.55);
+
+    --btn-lock: rgba(255, 176, 32, 0.14);
+    --btn-lock-border: rgba(255, 176, 32, 0.35);
+    --btn-unlock: rgba(255, 77, 77, 0.14);
+    --btn-unlock-border: rgba(255, 77, 77, 0.35);
+    --btn-primary: rgba(29, 185, 84, 0.15);
+    --btn-primary-border: rgba(29, 185, 84, 0.35);
+    --btn-primary-text: rgba(29, 185, 84, 0.95);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    background: radial-gradient(1200px 700px at 20% 0%, #15204a 0%, #0b1020 55%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--glass-panel);
+    border: 1px solid var(--glass-card-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .glass-card {
+    background: var(--glass-card);
+    border: 1px solid var(--glass-card-border);
+  }
+
+  .glass-sub {
+    background: var(--glass-sub);
+    border: 1px solid var(--glass-sub-border);
+  }
+
+  .drag-over-highlight {
+    outline: 2px solid rgba(255, 255, 255, 0.22);
+    outline-offset: -2px;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Board responsive breakpoints */
+@media (max-width: 1180px) {
+  .board-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .board-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .board-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .board-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
